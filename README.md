@@ -15,7 +15,7 @@ npm start
 
 ### hashFunction
 
-hashFunction has been created using node's **crypto** module and the SHA-256 hash. Hashes are created also in it's hexadecimal form.
+hashFunction has been created using **node's crypto module** and the **SHA-256 hash**. Hashes are created also in it's **hexadecimal form**.
 
 ### Mining Method: Proof of Work
 
