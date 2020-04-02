@@ -21,13 +21,17 @@ hashFunction has been created using **node's crypto module** and the **SHA-256 h
 
 Mining method following Proof of Work schema with nonce and difficulty level. Difficulty adjusted by mining time.
 
-### Real Time Network: PubNub
-
-Real time network created with **PubNub** for nodes to communicate between themselves an keep the chain updated at every moment with a distributed ledger.
-
 ### Wallet Keys: Elliptic
 
 Private and Public keys are being generated with **Elliptic secp256K1**.
+
+### Transaction IDs: uudi
+
+Transaction IDs are being generated with **uuid package, specifically v1 version**.
+
+### Real Time Network: PubNub
+
+Real time network created with **PubNub** for nodes to communicate between themselves an keep the chain updated at every moment with a distributed ledger.
 
 ## Next Steps
 
