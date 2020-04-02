@@ -6,9 +6,15 @@ import history from "../history";
 class ConductTransaction extends Component {
   state = {
     recipient: "",
-    amount: 0
+    amount: 0,
+    knownAdresses: []
   };
 
+  componentDidMount() {
+    fetch(`${document.location.origin}/api/known-addresses`)
+      .then(response => response.json())
+      .then(json => this.setState({ knownAdresses: json }));
+  }
   updateRecipient = event => {
     event.preventDefault();
     const value = event.target.value;
@@ -41,6 +47,15 @@ class ConductTransaction extends Component {
       <div className="ConductTransaction">
         <Link to="/">Home</Link>
         <h3>Conduct Transaction</h3>
+        <h4>Known Addresses</h4>
+        {this.state.knownAdresses.map(knownAdress => {
+          return (
+            <div key={knownAdress}>
+              <div>{knownAdress}</div>
+              <br />
+            </div>
+          );
+        })}
         <FormGroup>
           <FormControl
             input="text"
