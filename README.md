@@ -19,7 +19,7 @@ hashFunction has been created using **node's crypto module** and the **SHA-256 h
 
 ### Mining Method: Proof of Work
 
-Mining method following Proof of Work schema with nonce and difficulty level. Difficulty adjusted by mining time.
+Mining method following Proof of Work schema with nonce and difficulty level. To generate proof of work, then the new hash should have as many leading ceros in it's bit format as the difficulty level. Finally, difficulty is adjusted depending on mining time (1000ms for this project).
 
 ### Wallet Keys: Elliptic
 
