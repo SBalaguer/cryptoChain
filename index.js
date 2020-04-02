@@ -185,7 +185,7 @@ if (isDevelopment) {
       amount: 15
     });
 
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 5; i++) {
     if (i % 3 === 0) {
       walletAction();
       walletFooAction();

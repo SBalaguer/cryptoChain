@@ -14,8 +14,6 @@ class Block extends Component {
   get displayTransaction() {
     const { data } = this.props;
     const stringifiedData = JSON.stringify(data);
-    const dataDisplay =
-      stringifiedData.length > 35 ? `${stringifiedData.substring(0, 35)}...` : stringifiedData;
 
     if (this.state.displayTransaction) {
       return (
@@ -26,34 +24,33 @@ class Block extends Component {
               <Transaction transaction={transaction} />
             </div>
           ))}
-          <Button bsStyle="danger" bsSize="small" onClick={this.toggleTransaction}>
-            Show Less
-          </Button>
         </div>
       );
     }
-
-    return (
-      <div>
-        Data: {dataDisplay}
-        <Button bsStyle="danger" bsSize="small" onClick={this.toggleTransaction}>
-          Show More
-        </Button>
-      </div>
-    );
   }
 
   render() {
     const { timestamp, hash } = this.props;
-    const hashDisplay = `${hash.substring(0, 15)}...`;
     return (
-      <div className="Block">
-        <div>Hash: {hashDisplay}</div>
-        <div>Timestamp: {new Date(timestamp).toLocaleString()}</div>
-        {this.displayTransaction}
+      <div className="card text-center" style={{ margin: "1em auto", width: "60%" }}>
+        <div className="card-header">{hash}</div>
+        <div className="card-body">
+          <h5 className="card-title">Block Details</h5>
+          <p className="card-text">{this.displayTransaction}</p>
+          <Button bsStyle="danger" bsSize="small" onClick={this.toggleTransaction}>
+            {(this.displayTransaction && "Show Less") || "Show More"}
+          </Button>
+        </div>
+        <div className="card-footer text-muted">{new Date(timestamp).toLocaleString()}</div>
       </div>
     );
   }
 }
 
 export default Block;
+
+// <div className="Block">
+//   <div></div>
+//   <div>Timestamp: {new Date(timestamp).toLocaleString()}</div>
+//
+// </div>;

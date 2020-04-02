@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import Navbar from "./Navbar";
 
 import Block from "./Block";
 
@@ -32,23 +33,24 @@ class Blocks extends Component {
   render() {
     //console.log("this.state", this.state);
     return (
-      <div>
-        <h3>Blocks</h3>
-        <div>
+      <div className="container">
+        <Navbar page="blocks" />
+        <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
           {[...Array(Math.ceil(this.state.blocksLength / 5)).keys()].map(key => {
             //this creates an array y despues .keys nos da el i del array
             const paginatedId = key + 1;
             return (
-              <span key={key} onClick={this.fetchPaginatedBlocks(paginatedId)}>
-                <Button bsSize="small" bsStyle="danger">
-                  {paginatedId}
-                </Button>{" "}
-              </span>
+              <Button
+                key={key}
+                onClick={this.fetchPaginatedBlocks(paginatedId)}
+                bsSize="small"
+                bsStyle="danger"
+                style={{ padding: "0 0.6em", marginLeft: "1em" }}
+              >
+                {paginatedId}
+              </Button>
             );
           })}
-        </div>
-        <div>
-          <Link to="/">Home</Link>
         </div>
         {this.state.blocks.map(block => {
           return <Block key={block.hash} {...block} />;

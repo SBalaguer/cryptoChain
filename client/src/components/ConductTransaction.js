@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { FormGroup, FormControl, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import history from "../history";
+import Navbar from "./Navbar";
 
 class ConductTransaction extends Component {
   state = {
@@ -43,19 +44,25 @@ class ConductTransaction extends Component {
   };
 
   render() {
+    const show = !this.state.knownAdresses.length ? false : true;
     return (
-      <div className="ConductTransaction">
-        <Link to="/">Home</Link>
-        <h3>Conduct Transaction</h3>
-        <h4>Known Addresses</h4>
-        {this.state.knownAdresses.map(knownAdress => {
-          return (
-            <div key={knownAdress}>
-              <div>{knownAdress}</div>
-              <br />
-            </div>
-          );
-        })}
+      <div className="container">
+        <Navbar page="ct" />
+        {show && (
+          <Fragment>
+            <h4>List of Known Addresses in the Chain</h4>
+            <ul className="list-group list-group-flush" style={{ marginBottom: "1em" }}>
+              {this.state.knownAdresses.map(knownAdress => {
+                return (
+                  <li key={knownAdress} className="list-group-item list-group-item-light">
+                    {knownAdress}
+                  </li>
+                );
+              })}
+            </ul>
+          </Fragment>
+        )}
+        <h4>Create Transaction</h4>
         <FormGroup>
           <FormControl
             input="text"

@@ -3,12 +3,15 @@ import { Link } from "react-router-dom";
 import Transaction from "./Transaction";
 import { Button } from "react-bootstrap";
 import history from "../history";
+import Navbar from "./Navbar";
+import { Toast } from "react-bootstrap";
 
 const POLL_INTERVAL_MS = 10000;
 
 class TransactionPool extends Component {
   state = {
-    transactionPoolMap: {}
+    transactionPoolMap: {},
+    success: false
   };
 
   fetchTransactionMap = () => {
@@ -31,6 +34,8 @@ class TransactionPool extends Component {
       .catch(error => console.log(error));
   };
 
+  get successToast() {}
+
   componentDidMount() {
     this.fetchTransactionMap();
     this.fetchPoolMapInterval = setInterval(() => {
@@ -44,10 +49,8 @@ class TransactionPool extends Component {
 
   render() {
     return (
-      <div className="TransactionPool">
-        <div>
-          <Link to="/">Home</Link>
-        </div>
+      <div className="container">
+        <Navbar page="tpm" />
         <h3>Transaction Pool</h3>
         {Object.values(this.state.transactionPoolMap).map(transaction => {
           return (

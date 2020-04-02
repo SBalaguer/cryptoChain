@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
+import Navbar from "./Navbar";
 
 class App extends Component {
   state = {
@@ -17,19 +18,29 @@ class App extends Component {
   render() {
     const { address, balance } = this.state.walletInfo;
     return (
-      <div>
-        <img className="logo" src={logo} alt="" />
+      <div className="container">
+        <Navbar page="home" />
         <br />
-        <div>Welcome to the blockchain...</div>
+        <h1>CyrptoChain</h1>
+        <h6>
+          Creating my very first Blockchain & Crypto to deeply understand in and out's of it's logic
+        </h6>
         <br />
-        <div>
-          <Link to="/blocks">Blocks</Link>
-          <Link to="/conduct-transaction">Conduct Transaction</Link>
-          <Link to="/transaction-pool">Transaction Pool</Link>
-        </div>
-        <div className="WalletInf">
-          <div>Address: {address}</div>
-          <div>Balance: {balance}</div>
+        <div className="card">
+          <div className="card-header">Wallet Information</div>
+          <div className="card-body">
+            <blockquote className="blockquote mb-0">
+              <div style={{ marginBottom: "1em" }}>
+                <div style={{ color: "#f12d4b" }}>Address</div>
+                <div>{address}</div>
+                <div style={{ color: "#f12d4b" }}>Current Balance:</div>
+                <div>{balance} $SBC</div>
+              </div>
+              <footer className="blockquote-footer">
+                You can share you address with peers so that they can transfer $SBCoin's to you.
+              </footer>
+            </blockquote>
+          </div>
         </div>
       </div>
     );
